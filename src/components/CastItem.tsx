@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, Text, View, StyleSheet} from 'react-native';
+import {generateURI} from '../helpers/getUri';
 import {CastElement} from '../interfaces/creditsInterface';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 }
 
 export const CastItem = ({actor}: Props) => {
-  const uri = `https://image.tmdb.org/t/p/w500${actor.profile_path}`;
+  const uri = generateURI(actor.profile_path);
 
   return (
     <View style={styles.container}>
@@ -18,10 +19,10 @@ export const CastItem = ({actor}: Props) => {
         />
       )}
       <View style={styles.actorInfo}>
-        <Text style={{fontSize: 18, fontWeight: 'bold', color: 'black'}}>
+        <Text style={{fontSize: 18, fontWeight: 'bold', color: '#2A2C2F'}}>
           {actor.name}
         </Text>
-        <Text style={{fontSize: 16, opacity: 0.7, color: 'black'}}>
+        <Text style={{fontSize: 16, opacity: 0.7, color: '#2A2C2F'}}>
           {actor.character}
         </Text>
       </View>
@@ -44,7 +45,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
 
     elevation: 10,
-    marginRight: 20,
+    marginHorizontal: 20,
     paddingRight: 15,
   },
   actorInfo: {

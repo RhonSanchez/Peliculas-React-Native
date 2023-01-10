@@ -2,6 +2,7 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 import {Image, StyleSheet, View} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import {generateURI} from '../helpers/getUri';
 import {Movie} from '../interfaces/movieInterface';
 
 interface Props {
@@ -11,7 +12,7 @@ interface Props {
 }
 
 export const MoviePoster = ({movie, height = 420, width = 300}: Props) => {
-  const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const uri = generateURI(movie.poster_path);
   const navigation = useNavigation();
 
   return (

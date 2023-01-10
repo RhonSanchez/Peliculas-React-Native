@@ -16,9 +16,9 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
     <>
       <View style={{marginHorizontal: 20}}>
         <View style={{flexDirection: 'row'}}>
-          <Icon name="star-outline" color="grey" size={16} />
-          <Text style={{color: 'black'}}> {movieFull.vote_average}</Text>
-          <Text style={{color: 'black', marginLeft: 5}}>
+          <Icon name="star" color="#FFD23E" size={16} />
+          <Text style={{color: '#2A2C2F'}}> {movieFull.vote_average}</Text>
+          <Text style={{color: '#2A2C2F', marginLeft: 5}}>
             {movieFull.genres.map(g => g.name).join(', ')}
           </Text>
         </View>
@@ -28,21 +28,23 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
             fontSize: 20,
             marginTop: 10,
             fontWeight: 'bold',
-            color: 'black',
+            color: '#2A2C2F',
           }}>
           Historia
         </Text>
-        <Text style={{fontSize: 16, color: 'black'}}>{movieFull.overview}</Text>
+        <Text style={{fontSize: 16, color: '#2A2C2F'}}>
+          {movieFull.overview}
+        </Text>
         <Text
           style={{
             fontSize: 20,
             marginTop: 10,
             fontWeight: 'bold',
-            color: 'black',
+            color: '#2A2C2F',
           }}>
           Presupuesto
         </Text>
-        <Text style={{fontSize: 18, color: 'black'}}>
+        <Text style={{fontSize: 18, color: '#2A2C2F'}}>
           {currencyFormatter.format(movieFull.budget, {code: 'USD'})}
         </Text>
       </View>
@@ -52,7 +54,7 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
             fontSize: 20,
             marginTop: 10,
             fontWeight: 'bold',
-            color: 'black',
+            color: '#2A2C2F',
             marginHorizontal: 20,
           }}>
           Actores
@@ -65,7 +67,6 @@ export const MovieDetails = ({movieFull, cast}: Props) => {
           showsHorizontalScrollIndicator={false}
           style={{marginTop: 10, height: 70}}
         />
-        {/* <CastItem actor={cast[0]} /> */}
       </View>
     </>
   );

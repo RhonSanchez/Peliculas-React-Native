@@ -21,7 +21,7 @@ export const HorizontalSlider = ({title, movies}: Props) => {
             fontSize: 30,
             fontWeight: 'bold',
             marginLeft: 20,
-            color: 'black',
+            color: '#2A2C2F',
           }}>
           {title}
         </Text>

@@ -14,6 +14,7 @@ import {RootStackParams} from '../navigation/Navigation';
 import {useMovieDetails} from '../hooks/useMovieDetails';
 import {MovieDetails} from '../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {generateURI} from '../helpers/getUri';
 
 const screenHeight = Dimensions.get('screen').height;
 
@@ -21,7 +22,7 @@ interface Props extends StackScreenProps<RootStackParams, 'DetailScreen'> {}
 
 export const DetailScreen = ({route, navigation}: Props) => {
   const movie = route.params;
-  const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+  const uri = generateURI(movie.poster_path);
 
   const {isLoading, movieFull, cast} = useMovieDetails(movie.id);
 
@@ -37,7 +38,7 @@ export const DetailScreen = ({route, navigation}: Props) => {
         <Text style={styles.title}>{movie.title}</Text>
       </View>
       {isLoading ? (
-        <ActivityIndicator size={35} color="grey" style={{marginTop: 20}} />
+        <ActivityIndicator size={35} color="#2A2C2F" style={{marginTop: 20}} />
       ) : (
         <MovieDetails movieFull={movieFull!} cast={cast} />
       )}
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.9,
     shadowRadius: 7,
-    elevation: 10,
+    elevation: 40,
     borderBottomEndRadius: 25,
     borderBottomStartRadius: 25,
   },
@@ -79,12 +80,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   subTitle: {
-    color: 'black',
+    color: '#2A2C2F',
     fontSize: 16,
     opacity: 0.8,
   },
   title: {
-    color: 'black',
+    color: '#2A2C2F',
     fontSize: 20,
     fontWeight: 'bold',
   },

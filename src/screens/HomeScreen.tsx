@@ -1,6 +1,5 @@
 import React, {useContext, useEffect} from 'react';
 import {ActivityIndicator, Dimensions, View} from 'react-native';
-import ImageColors from 'react-native-image-colors';
 import {useMovies} from '../hooks/useMovies';
 import {MoviePoster} from '../components/MoviePoster';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
@@ -10,6 +9,7 @@ import {HorizontalSlider} from '../components/HorizontalSlider';
 import {GradientBackground} from '../components/GradientBackground';
 import {getImageColors} from '../helpers/getColores';
 import {GradientContext} from '../context/GradientContext';
+import {generateURI} from '../helpers/getUri';
 
 const {width: windowWidth} = Dimensions.get('window');
 
@@ -20,7 +20,7 @@ export const HomeScreen = () => {
 
   const getPosterColors = async (index: number) => {
     const movie = nowPlaying[index];
-    const uri = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
+    const uri = generateURI(movie.poster_path);
     const [primary = 'transparent', secondary = 'transparent'] =
       await getImageColors(uri);
     setMainColors({primary, secondary});
@@ -35,7 +35,7 @@ export const HomeScreen = () => {
   if (isLoading) {
     return (
       <View style={{flex: 1, justifyContent: 'center', alignContent: 'center'}}>
-        <ActivityIndicator color="red" size={100} />
+        <ActivityIndicator color="#2A2C2F" size={100} />
       </View>
     );
   }
